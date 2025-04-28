@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>zzzz</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            /* Color principal */
+            --main-color: #1313d3;
+            /* Color secundario */
+            --second-color: rgb(0, 255, 17);
+            /* calculo */
+            --calculation: 0;
+        }
+
+        .contenido {
+            height: 100vh;
+            width: 100vw;
+            overflow-y: scroll;
+            scrollbar-width: none;
+            scroll-snap-type: y mandatory;
+            scroll-snap-stop: always;
+        }
+
+        .seccion {
+            scroll-snap-align: start;
+        }
+
+        .n4 {
+            display: flex;
+            width: 100vw;
+            height: 100vh;
+            background-image: radial-gradient(circle, #ff7f50, #1e90ff);
+
+
+            justify-content: center;
+            align-items: center;
+        }
+
+        .n1 {
+            display: flex;
+            width: 100vw;
+            height: 100vh;
+            background-color: var(--main-color);
+
+            justify-content: center;
+            align-items: center;
+        }
+
+        .carousel {
+            width: 100%;
+            height: 100%;
+        }
+        
+        .cubo1 {
+            background-color: violet;
+        }
+
+        @media (orientation: landscape) {
+            .imagen {
+                height: 50%;
+                position: absolute;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                transition: transform 0.5s;
+            }
+
+            .item figure h1 {
+                font-size: 20vh;
+                position: absolute;
+                top: 20%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                transition: transform 0.5s;
+            }
+
+            .cubo h1 {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                color: rgb(0, 0, 0);
+                font-size: 5vh;
+            }
+        }
+
+        @media (orientation: portrait) {
+            .imagen {
+                width: 100%;
+                position: absolute;
+                top: 43%;
+                left: 12%;
+                transform: translate(-50%, -50%);
+                transition: transform 0.5s;
+            }
+
+            .item figure h1 {
+                font-size: 20vw;
+                position: absolute;
+                top: 20%;
+                left: 50%;
+                transition: transform 0.5s;
+                transform: translate(-50%, -50%);
+            }
+
+            .hola {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                color: rgb(0, 0, 0);
+                font-size: 5vh;
+            }
+        }
+
+    
+        @media (orientation: landscape) and (min-aspect-ratio: 21/9) {
+            .cubo {
+                width: 233.3vh;
+                height: 100vh;
+                position: relative;
+            }
+        }
+
+        @media (orientation: landscape) and (max-aspect-ratio: 21/9) {
+            .cubo {
+                width: 233.3vh;
+                height: 100vh;
+                position: relative;
+            }
+        }
+
+        @media (orientation: landscape) and (max-aspect-ratio: 16/9) {
+            .cubo {
+                width: 177.7vh;
+                height: 100vh;
+                position: relative;
+            }
+        }
+
+        @media (orientation: landscape) and (max-aspect-ratio: 4/3) {
+            .cubo {
+                width: 133vh;
+                height: 100vh;
+                position: relative;
+            }
+        }
+
+        @media (orientation: landscape) and (max-aspect-ratio: 1/1) {
+            .cubo {
+                width: 100vh;
+                height: 100vh;
+                position: relative;
+            }
+        }
+
+        @media (orientation: portrait) and (max-aspect-ratio: 1/1) {
+            .cubo {
+                width: 100vw;
+                height: 100vw;
+                position: relative;
+            }
+
+
+
+        }
+
+        @media (orientation: portrait) and (max-aspect-ratio: 3/4) {
+            .cubo {
+                width: 100vw;
+                height: 133vw;
+                position: relative;
+            }
+
+
+
+        }
+
+        @media (orientation: portrait) and (max-aspect-ratio: 2/3) {
+            .cubo {
+                width: 100vw;
+                height: 150vw;
+                position: relative;
+            }
+
+
+
+        }
+
+        @media (orientation: portrait) and (max-aspect-ratio: 9/16) {
+            .cubo {
+                width: 100vw;
+                height: 177.7vw;
+                position: relative;
+            }
+
+
+
+        }
+
+        @media (orientation: portrait) and (max-aspect-ratio: 9/20) {
+            .cubo {
+                width: 100vw;
+                height: 222.2vw;
+                position: relative;
+            }
+
+
+        }
+
+        .item {
+            position: absolute;
+            inset: 0;
+            opacity: 0;
+            transform: translateX(calc(100vh * 1));
+            transition: 0.5s;
+        }
+
+        .carousel .list .item .item.active {
+            width: 100%;
+            height: 100%;
+        }
+
+        .item.active {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+
+        .item {
+            transform: translateX(calc(100vw * var(--calculation)));
+            transition: 0.5s;
+            opacity: 0;
+        }
+
+        .imagen {
+            transform: rotate(0deg);
+            transition: transform 0.5s;
+            transition-delay: 0.3s;
+        }
+
+        .item .active {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .item.active figure img {
+            transform: rotate(-20deg);
+        }
+
+        @keyframes slide360 {
+            0% {
+                transform: translateX(0%);
+            }
+
+            33.33% {
+                transform: translateX(-100%);
+            }
+
+            66.66% {
+                transform: translateX(-200%);
+            }
+
+            100% {
+                transform: translateX(0%);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="contenido">
+        <section class="seccion n4">
+            <div class="cubo cubo1">
+                <div class="carousel">
+                    <div class="list">
+                        <div class="item active">
+                            <figure>
+                                <img src="img/fruit_avocado.png" class="imagen">
+                                <h1> avocado</h1>
+                            </figure>
+                        </div>
+                        <div class="item">
+                            <figure>
+                                <img src="img/fruit_orange.png" class="imagen">
+                                <h1> orange</h1>
+                            </figure>
+                        </div>
+                        <div class="item">
+                            <figure>
+                                <img src="img/fruit_strawberry.png" class="imagen">
+                                <h1> frutilla</h1>
+                            </figure>
+                        </div>
+                    </div>
+                </div>
+                <script>
+                    let carousel = document.querySelector('.carousel');
+                    let items = carousel.querySelectorAll('.list .item');
+
+                    let active = 0;
+                    let lastPosition = items.length - 1;
+                    let autoPlay;
+
+                    const startAutoPlay = () => {
+                        clearInterval(autoPlay);
+                        autoPlay = setInterval(() => {
+                            active = active + 1 > lastPosition ? 0 : active + 1;
+                            setSlider();
+                        }, 5000);
+                    };
+                    startAutoPlay();
+
+                    const setSlider = () => {
+                        let itemActiveOld = carousel.querySelector('.list .item.active');
+                        if (itemActiveOld) itemActiveOld.classList.remove('active');
+                        items[active].classList.add('active');
+                    };
+                    setSlider();
+                </script>
+            </div>
+        </section>
+        <section class="seccion n1">
+            <div class="cubo cubo2">
+                <h1 class="hola">Hola</h1>
+            </div>
+        </section>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>poker gg</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+
+        .contenido {
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            width: 100vw;
+            scrollbar-width: none;
+            overflow-y: scroll;
+            scroll-snap-type: y mandatory;
+        }
+
+        .contenido section {
+            flex: 1 0 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            scroll-snap-align: start;
+        }
+
+        .seccion1 {
+            background-color: #ff6b6b;
+            color: white;
+        }
+
+        .seccion2 {
+            background-color: #89c2d9;
+            /* Azul claro */
+            color: #fff;
+        }
+
+        .seccion3 {
+            background-color: #8ac926;
+            /* Verde claro */
+            color: #fff;
+        }
+
+        .seccion4 {
+            background-color: #ffc93c;
+            /* Amarillo suave */
+            color: #333;
+        }
+
+        .seccion5 {
+            background-color: #ff595e;
+            /* Rojo más fuerte */
+            color: #fff;
+        }
+
+        .seccion6 {
+            background-color: #084c61;
+            /* Azul oscuro */
+            color: #fff;
+        }
+
+        .seccion7 {
+            background-color: #f4a261;
+            /* Naranja suave */
+            color: #333;
+        }
+
+        .seccion8 {
+            background-color: #e56b6f;
+            /* Rosa suave */
+            color: #fff;
+        }
+
+
+        h1 {
+            font-size: 5vw;
+        }
+
+        p {
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+            line-height: 1.7;
+        }
+
+
+        @media (orientation: landscape) {
+            #email-cube {
+                display: none;
+            }
+
+            .carousel-container {
+                display: flex;
+                background-color: rgba(142, 5, 48, 0.249);
+                height: 10vh;
+                overflow: hidden;
+                width: 90vw;
+                /* Ajusta el ancho según necesites */
+                align-items: center;
+            }
+
+
+            .carousel-wrapper {
+                display: flex;
+                width: fit-content;
+                /* Ajusta el ancho al contenido */
+                animation: scroll 5s linear infinite;
+                /* Ajusta la duración */
+            }
+
+            .brand-item {
+                flex: 0 0 auto;
+                margin-right: 20px;
+                /* Espacio entre logos */
+            }
+
+            .brand-item img {
+                max-height: 50px;
+                /* Ajusta la altura máxima */
+                vertical-align: middle;
+            }
+
+            @keyframes scroll {
+                0% {
+                    transform: translateX(0);
+                }
+
+                100% {
+                    transform: translateX(-50%);
+                }
+
+                /* Desplaza la mitad del contenido */
+            }
+
+
+            /* Opcional: Pausar al pasar el ratón */
+            .carousel-container:hover .carousel-wrapper {
+                animation-play-state: paused;
+            }
+
+
+        }
+
+        @media (orientation: portrait) {
+            .carousel-container {
+                display: none;
+            }
+
+            .carousel-wrapper {
+                display: none;
+            }
+
+            h1 {
+                font-size: 9vw;
+            }
+
+            p {
+                font-size: 4vw;
+            }
+
+            .seccion8 {
+                background-color: #cb080f;
+                /* Rosa suave */
+                color: #fff;
+
+            }
+
+            .rotating-cube {
+                width: 70vw;
+                /* Ancho del paralelepípedo */
+                height: 10vh;
+                /* Alto del paralelepípedo */
+                position: relative;
+                transform-style: preserve-3d;
+                animation: rotateCube 6s infinite ease-in-out;
+                /* Animación de rotación */
+                transform: rotateY(0deg);
+                /* Rotación inicial */
+
+            }
+
+            .cube-face {
+                position: absolute;
+                width: 70vw;
+                /* Ancho de las caras */
+                height: 10vh;
+                /* Alto de las caras */
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                font-size: 2.5vw;
+                color: #fff;
+                border: 2px solid #fff;
+                border-radius: 10px;
+                background-color: rgba(255, 255, 255, 0.1);
+                /* Fondo semi-transparente */
+                backface-visibility: hidden;
+                /* Oculta la parte trasera de las caras */
+            }
+
+            .cube-face:nth-child(1) {
+                transform: rotateY(0deg) translateZ(35vw);
+            }
+
+            /* Front */
+            .cube-face:nth-child(2) {
+                transform: rotateY(90deg) translateZ(35vw);
+            }
+
+            /* Right */
+            .cube-face:nth-child(3) {
+                transform: rotateY(180deg) translateZ(35vw);
+            }
+
+            /* Back */
+            .cube-face:nth-child(4) {
+                transform: rotateY(-90deg) translateZ(35vw);
+            }
+
+            /* Left */
+
+
+            @keyframes rotateCube {
+                0% {
+                    transform: rotateY(0deg);
+                }
+
+                25% {
+                    transform: rotateY(90deg);
+                }
+
+                50% {
+                    transform: rotateY(180deg);
+                }
+
+                75% {
+                    transform: rotateY(270deg);
+                }
+
+                100% {
+                    transform: rotateY(360deg);
+                }
+            }
+
+        }
+
+
+
+
+
+
+
+
+        body {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        position: relative;
+    }
+
+    header {
+        display: flex;
+        height: 40px;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 50px;
+        box-sizing: border-box;
+        font-family: monospace;
+        font-weight: bold;
+        font-size: large;
+        position: relative;
+        z-index: 1;
+    }
+
+    header ul {
+        padding: 0;
+        margin: 0;
+        list-style: none;
+        display: flex;
+        gap: 20px;
+    }
+
+    .carousel {
+        width: 100vw;
+        height: 100vh;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .list {
+        width: 100%;
+        height: 100%;
+    }
+
+    .item {
+        width: 100%;
+        height: 100%;
+        background-color: var(--background);
+        position: absolute;
+        top: 0;
+        left: 0;
+        overflow: hidden;
+        display: none;
+    }
+
+    .item img.fruit {
+        width: 90%;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 15;
+        pointer-events: none;
+    }
+
+    .item .content {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+        font-size: 12rem;
+        color: #eee;
+        font-weight: bold;
+        font-family: system-ui;
+        text-transform: uppercase;
+        white-space: nowrap;
+    }
+
+    .item.active {
+        display: block;
+    }
+
+    .item.hidden {
+        display: block;
+        pointer-events: none;
+        background-color: transparent;
+        z-index: 1;
+    }
+
+
+    #prev,
+    #next {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background-color: transparent;
+        border: 1px solid #eee9;
+        background-color: #eee5;
+        color: #eee;
+        font-size: x-large;
+        font-family: monospace;
+        cursor: pointer;
+        z-index: 15;
+    }
+
+    #prev {
+        left: 20px;
+    }
+
+    #next {
+        right: 20px;
+    }
+
+
+    @keyframes toActive {
+        from {
+            top: 100%;
+            opacity: 0;
+        }
+    }
+
+    @keyframes toOut {
+        from {
+            top: 50%;
+            opacity: 1;
+        }
+    }
+
+    .item.active img.fruit {
+        animation: toActive 0.5s ease-in-out 1;
+    }
+
+    .item.hidden img.fruit {
+        animation: toOut 0.8s ease-in-out 1;
+        top: -100%;
+        opacity: 0;
+    }
+
+    .item.active .content {
+        animation: toActive 0.8s ease-in-out 1;
+    }
+
+    .item.hidden .content {
+        opacity: 0;
+    }
+
+
+    .carousel.right .item.active img.fruit {
+        animation: toActivePrev 0.5s ease-in-out 1;
+    }
+
+    .carousel.right .item.hidden img.fruit {
+        animation: toOut 0.8s ease-in-out 1;
+        top: 100%;
+        opacity: 0;
+    }
+
+    .carousel.right .item.active .content {
+        animation: toActivePrev 0.8s ease-in-out 1;
+    }
+
+
+    @keyframes toActivePrev {
+        from {
+            top: 0;
+            opacity: 0;
+        }
+    }
+
+
+
+
+
+    :root {
+        --width-mockup: calc(371px / 1.5);
+        --height-mockup: calc(673px / 1.5);
+    }
+
+
+    .leaves {
+        position: absolute;
+        width: 170px;
+        height: 170px;
+        background-image: url(img/leaves.png);
+        background-size: 100%;
+        top: calc((50% - (var(--height-mockup) / 1.7)));
+        left: calc((50% + (var(--width-mockup) / 5)));
+    }
+
+    .shadow {
+        width: var(--width-mockup);
+        height: 100px;
+        background-color: #0008;
+        border-radius: 50%;
+        position: absolute;
+        top: calc((50% + (var(--height-mockup) / 2)));
+        left: 50%;
+        transform: translateX(-50%);
+        filter: blur(20px);
+    }
+
+    @media screen and (max-width: 768px) {
+        .item .content {
+            transform: translate(-50%, -50%) scale(.5);
+        }
+
+        .item img.fruit {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+    </style>
+</head>
+
+<body>
+    <div class="contenido">
+        <section class="seccion8">
+            <h1>Testimonios de Estudiantes</h1>
+            <div id="email-cube">
+                <div class="rotating-cube">
+                    <div class="cube-face">1sa.nifuri@duocuc.cl</div>
+                    <div class="cube-face">2sa.nifuri@duocuc.cl</div>
+                    <div class="cube-face">3sa.nifuri@duocuc.cl</div>
+                    <div class="cube-face">4sa.nifuri@duocuc.cl</div>
+                </div>
+            </div>
+            <div id="email-cube">
+                <div class="rotating-cube">
+                    <div class="cube-face">7sa.nifuri@duocuc.cl</div>
+                    <div class="cube-face">8sa.nifuri@duocuc.cl</div>
+                    <div class="cube-face">9sa.nifuri@duocuc.cl</div>
+                    <div class="cube-face">10sa.nifuri@duocuc.cl</div>
+                </div>
+            </div>
+            <div id="email-cube">
+                <div class="rotating-cube">
+                    <div class="cube-face">7sa.nifuri@duocuc.cl</div>
+                    <div class="cube-face">8sa.nifuri@duocuc.cl</div>
+                    <div class="cube-face">9sa.nifuri@duocuc.cl</div>
+                    <div class="cube-face">10sa.nifuri@duocuc.cl</div>
+                </div>
+            </div>
+            <div id="email-cube">
+                <div class="rotating-cube">
+                    <div class="cube-face">7sa.nifuri@duocuc.cl</div>
+                    <div class="cube-face">8sa.nifuri@duocuc.cl</div>
+                    <div class="cube-face">9sa.nifuri@duocuc.cl</div>
+                    <div class="cube-face">10sa.nifuri@duocuc.cl</div>
+                </div>
+            </div>
+
+            <div class="carousel-container">
+                <div class="carousel-wrapper">
+                    <div class="brand-item">sa.nifuri@duocuc.cl</div>
+                    <div class="brand-item">sa.nifuri@duocuc.cl</div>
+                    <div class="brand-item">sa.nifuri@duocuc.cl</div>
+                    <div class="brand-item">sa.nifuri@duocuc.cl</div>
+                    <div class="brand-item">sa.nifuri@duocuc.cl</div>
+                    <div class="brand-item">sa.nifuri@duocuc.cl</div>
+                    <div class="brand-item">sa.nifuri@duocuc.cl</div>
+                    <div class="brand-item">sa.nifuri@duocuc.cl</div>
+                    <div class="brand-item">sa.nifuri@duocuc.cl</div>
+                    <div class="brand-item">sa.nifuri@duocuc.cl</div>
+                    <div class="brand-item">sa.nifuri@duocuc.cl</div>
+                    <div class="brand-item">sa.nifuri@duocuc.cl</div>
+                </div>
+            </div>
+            <div class="carousel-container">
+                <div class="carousel-wrapper">
+                    <div class="brand-item">sa.nifuri@duocuc.cl</div>
+                    <div class="brand-item">sa.nifuri@duocuc.cl</div>
+                    <div class="brand-item">sa.nifuri@duocuc.cl</div>
+                    <div class="brand-item">sa.nifuri@duocuc.cl</div>
+                    <div class="brand-item">sa.nifuri@duocuc.cl</div>
+                    <div class="brand-item">sa.nifuri@duocuc.cl</div>
+                    <div class="brand-item">sa.nifuri@duocuc.cl</div>
+                    <div class="brand-item">sa.nifuri@duocuc.cl</div>
+                    <div class="brand-item">sa.nifuri@duocuc.cl</div>
+                    <div class="brand-item">sa.nifuri@duocuc.cl</div>
+                    <div class="brand-item">sa.nifuri@duocuc.cl</div>
+                    <div class="brand-item">sa.nifuri@duocuc.cl</div>
+                </div>
+            </div>
+            <div class="carousel-container">
+                <div class="carousel-wrapper">
+                    <div class="brand-item">sa.nifuri@duocuc.cl</div>
+                    <div class="brand-item">sa.nifuri@duocuc.cl</div>
+                    <div class="brand-item">sa.nifuri@duocuc.cl</div>
+                    <div class="brand-item">sa.nifuri@duocuc.cl</div>
+                    <div class="brand-item">sa.nifuri@duocuc.cl</div>
+                    <div class="brand-item">sa.nifuri@duocuc.cl</div>
+                    <div class="brand-item">sa.nifuri@duocuc.cl</div>
+                    <div class="brand-item">sa.nifuri@duocuc.cl</div>
+                    <div class="brand-item">sa.nifuri@duocuc.cl</div>
+                    <div class="brand-item">sa.nifuri@duocuc.cl</div>
+                    <div class="brand-item">sa.nifuri@duocuc.cl</div>
+                    <div class="brand-item">sa.nifuri@duocuc.cl</div>
+                </div>
+            </div>
+            <div class="carousel-container">
+                <div class="carousel-wrapper">
+                    <div class="brand-item">sa.nifuri@duocuc.cl</div>
+                    <div class="brand-item">sa.nifuri@duocuc.cl</div>
+                    <div class="brand-item">sa.nifuri@duocuc.cl</div>
+                    <div class="brand-item">sa.nifuri@duocuc.cl</div>
+                    <div class="brand-item">sa.nifuri@duocuc.cl</div>
+                    <div class="brand-item">sa.nifuri@duocuc.cl</div>
+                    <div class="brand-item">sa.nifuri@duocuc.cl</div>
+                    <div class="brand-item">sa.nifuri@duocuc.cl</div>
+                    <div class="brand-item">sa.nifuri@duocuc.cl</div>
+                    <div class="brand-item">sa.nifuri@duocuc.cl</div>
+                    <div class="brand-item">sa.nifuri@duocuc.cl</div>
+                    <div class="brand-item">sa.nifuri@duocuc.cl</div>
+                </div>
+            </div>
+            <div class="carousel-container">
+                <div class="carousel-wrapper">
+                    <div class="brand-item">sa.nifuri@duocuc.cl</div>
+                    <div class="brand-item">sa.nifuri@duocuc.cl</div>
+                    <div class="brand-item">sa.nifuri@duocuc.cl</div>
+                    <div class="brand-item">sa.nifuri@duocuc.cl</div>
+                    <div class="brand-item">sa.nifuri@duocuc.cl</div>
+                    <div class="brand-item">sa.nifuri@duocuc.cl</div>
+                    <div class="brand-item">sa.nifuri@duocuc.cl</div>
+                    <div class="brand-item">sa.nifuri@duocuc.cl</div>
+                    <div class="brand-item">sa.nifuri@duocuc.cl</div>
+                    <div class="brand-item">sa.nifuri@duocuc.cl</div>
+                    <div class="brand-item">sa.nifuri@duocuc.cl</div>
+                    <div class="brand-item">sa.nifuri@duocuc.cl</div>
+                </div>
+            </div>
+
+        </section>
+
+        <section class="seccion7">
+            <div class="carousel">
+                <div class="list">
+                    <div class="item active" style="--background: #EA3D41">
+                        <div class="content">Strawberry</div>
+                        <img src="img/fruit_strawberry.png" class="fruit">
+                    </div>
+                    <div class="item" style="--background: #2D5643">
+                        <div class="content">avocado</div>
+                        <img src="img/fruit_avocado.png" class="fruit">
+                    </div>
+                    <div class="item hidden" style="--background: #E7A043">
+                        <div class="content">orange</div>
+                        <img src="img/fruit_orange.png" class="fruit">
+                    </div>
+                </div>
+                <div class="leaves"></div>
+                <div class="arrow">
+                    <button id="prev"> << </button>
+                    <button id="next"> >> </button>
+                </div>
+            </div>
+        </section>
+
+        <section class="seccion1">
+            <h1>Desbloquea YouTube Premium para Todos</h1>
+            <p>Por solo $1 al mes, disfruta de YouTube sin anuncios, en segundo plano y con contenido exclusivo.</p>
+        </section>
+        <section class="seccion2">
+            <h1>Comparte la Alegría Premium</h1>
+            <p>El archivo APK mensual puede ser compartido con amigos y familiares, permitiendo que muchos disfruten de
+                los beneficios con una sola suscripción.</p>
+            <p>Un pago, disfrute ilimitado.</p>
+        </section>
+        <section class="seccion3">
+            <h1>Entrega Mensual Sencilla</h1>
+            <p>Recibe un APK actualizado mensualmente por correo electrónico. Descarga la aplicación o comparte el
+                enlace con quien desees.</p>
+        </section>
+        <section class="seccion4">
+            <h1>Ahorra Dinero</h1>
+            <p>Disfruta de todas las funciones premium por una fracción del costo de la suscripción oficial.</p>
+        </section>
+        <section class="seccion5">
+            <h1>Exclusividad</h1>
+            <p>Un número limitado de suscripciones, solo 1000 suscriptores.</p>
+        </section>
+        <section class="seccion6">
+            <h1>Garantía de Prueba Gratuita</h1>
+            <p>Prueba gratuita para que lo pruebes sin arriesgar tu dinero.</p>
+        </section>
+        
+
+
+    </div>
+
+
+</body>
+
+<script>
+    const list = document.querySelectorAll('.carousel .list .item');
+    const next = document.getElementById('next');
+    const prev = document.getElementById('prev');
+    let active = 0;
+
+    // Cambia el carrusel al siguiente o anterior elemento
+    function changeCarousel(direction) {
+        list[active].classList.remove('active');
+        list[active].classList.add('hidden');
+
+        if (direction === 'next') {
+            active = (active + 1) % list.length;
+        } else {
+            active = (active - 1 + list.length) % list.length;
+        }
+
+        list[active].classList.add('active');
+        list[active].classList.remove('hidden');
+    }
+
+    // Eventos para los botones
+    next.onclick = () => changeCarousel('next');
+    prev.onclick = () => changeCarousel('prev');
+
+    // Auto-rotación cada 3 segundos
+    let refreshInterval = setInterval(() => changeCarousel('next'), 3000);
+
+    // Reinicia el temporizador al interactuar con los botones
+    [next, prev].forEach(button => {
+        button.addEventListener('click', () => {
+            clearInterval(refreshInterval);
+            refreshInterval = setInterval(() => changeCarousel('next'), 3000);
+        });
+    });
+</script>
+
+</html>

@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        
+        .contenido{
+            height: 100vh;
+            width: 100vw;
+            overflow-y: scroll;
+            scrollbar-width: none;
+            scroll-snap-type: y mandatory;
+            
+            scroll-snap-stop: always;
+        }
+
+
+        
+        .seccion{
+            scroll-snap-align: start;
+        }
+
+        .n1  {
+            position: relative;
+            display: flex;
+            width: 100vw;
+            height: 100vh;
+            background-color: navajowhite;
+            justify-content: center;
+            align-items: center;
+        }
+        .n2 {
+            position: relative;
+            display: flex;
+            width: 100vw;
+            height: 100vh;
+            background-color: navajowhite;
+            justify-content: center;
+            align-items: center;
+        }
+        .n3 {
+            position: relative;
+            display: flex;
+            width: 100vw;
+            height: 100vh;
+            background-color: navajowhite;
+            justify-content: center;
+            align-items: center;
+        }
+
+
+        @media (orientation: landscape) {
+            .cubo {
+            width: 100vh;
+            height: 100vh;
+            position: relative;
+            overflow: hidden;
+            background-color: blue;
+        }
+
+
+            .cubo img.fruit {
+            width: 90vh;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 15;
+            pointer-events: none;
+        }
+        .cubo .content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            font-size: 16vh;
+            color: #eee;
+            font-weight: bold;
+            font-family: system-ui;
+            text-transform: uppercase;
+            white-space: nowrap;
+        }
+
+        }
+
+        @media (orientation: portrait) {
+            .cubo {
+            width: 100vw;
+            height: 100vw;
+            position: relative;
+            overflow: hidden;
+            background-color: rgb(0, 0, 0);
+        }
+
+            .cubo img.fruit {
+            width: 110vw;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 1;
+            pointer-events: none;
+        }
+        .cubo .content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            font-size: 15vw;
+            color: #eee;
+            font-weight: bold;
+            font-family: system-ui;
+            text-transform: uppercase;
+            white-space: nowrap;
+            z-index: 2;
+        }
+
+        }
+        
+
+    </style>
+</head>
+
+<body>
+    <div class="contenido">
+        <div class="seccion n1">
+            <div class="cubo">
+                <div class="content">frutillas</div>
+                <img src="img/fruit_strawberry.png" class="fruit">
+
+            </div>
+        </div>
+        <div class="seccion n2">
+            <div class="cubo">
+                <div class="content">naranjas</div>
+                <img src="img/fruit_orange.png" class="fruit">
+
+            </div>
+        </div>
+        <div class="seccion n3">
+            <div class="cubo">
+                <div class="content">paltas</div>
+                <img src="img/fruit_avocado.png" class="fruit">
+
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

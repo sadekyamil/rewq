@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+       
+
+        .contenido {
+            height: 100vh;
+            width: 100vw;
+            overflow-y: scroll;
+            scrollbar-width: none;
+            overflow: hidden;
+            background-color: rgb(0, 208, 255);
+            
+        }
+        
+
+
+
+        @media (orientation: landscape) {
+            .slide {
+                width: 133.3vh;
+                height: 100vh;
+                position: relative;
+                overflow: hidden;
+                background-color: blue;
+            }
+
+
+            .slide img.fruit {
+                width: 90vh;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                z-index: 15;
+                pointer-events: none;
+            }
+
+            .slide .content {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                text-align: center;
+                font-size: 16vh;
+                color: #eee;
+                font-weight: bold;
+                font-family: system-ui;
+                text-transform: uppercase;
+                white-space: nowrap;
+            }
+
+        }
+
+        @media (orientation: portrait) {
+            .slide {
+                width: 100vw;
+                height: 122vw;
+                position: relative;
+                overflow: hidden;
+                background-color: rgb(0, 0, 0);
+            }
+
+            .slide img.fruit {
+                width: 110vw;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                z-index: 1;
+                pointer-events: none;
+            }
+
+            .slide .content {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                text-align: center;
+                font-size: 15vw;
+                color: #eee;
+                font-weight: bold;
+                font-family: system-ui;
+                text-transform: uppercase;
+                white-space: nowrap;
+                z-index: 2;
+            }
+            button {
+                display: none;
+            }
+
+        }
+
+
+
+        .slider {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .slide {
+            min-width: 100vw;
+        }
+
+        .slide img {
+            width: 100%;
+            display: block;
+        }
+
+
+
+
+
+        
+
+        .prev-button,
+        .next-button {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(0, 0, 0, 0);
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 8vh;
+        }
+
+        .prev-button {
+            left: 4vh;
+        }
+
+        .next-button {
+            right: 4vh;
+        }
+
+        
+        
+    </style>
+</head>
+
+<body>
+
+        <!-- Contenedor que da el ratio:aspect a mi contenido -->
+        <div class="contenido">  
+            <!-- colocar todas las secciones que desee -->
+            <div class="seccion slider">
+            <!-- Primera diapositiva -->
+                <div class="slide cubo">
+                    <div class="content">frutilla</div>
+                    <img src="img/fruit_orange.png" class="fruit">
+                </div>
+                <!-- Segunda diapositiva -->
+                <div class="slide cubo">
+                    <div class="content">naranja</div>
+                    <img src="img/fruit_strawberry.png" class="fruit">
+                </div>
+                <!-- Tercera diapositiva -->
+                <div class="slide cubo">
+                    <div class="content">palta</div>
+                    <img src="img/fruit_avocado.png" class="fruit">
+                </div>
+            </div>
+            <button class="prev-button">❮</button>
+            <button class="next-button">❯</button>
+        </div>
+
+
+
+    <script>
+        const slider = document.querySelector('.slider');
+        const slides = document.querySelectorAll('.slide');
+        const prevButton = document.querySelector('.prev-button');
+        const nextButton = document.querySelector('.next-button');
+        let counter = 0;
+
+        function slideNext() {
+            counter++;
+            if (counter >= slides.length) {
+                counter = 0;
+            }
+            slider.style.transform = `translateX(-${counter * 100}%)`;
+        }
+
+        function slidePrev() {
+            counter--;
+            if (counter < 0) {
+                counter = slides.length - 1;
+            }
+            slider.style.transform = `translateX(-${counter * 100}%)`;
+        }
+
+        nextButton.addEventListener('click', slideNext);
+        prevButton.addEventListener('click', slidePrev);
+
+        setInterval(slideNext, 3000);
+    </script>
+</body>
+
+</html>
